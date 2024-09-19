@@ -11,6 +11,7 @@ import ProtectedRoute from "./Utils/ProtectedRoute";
 import AnonymousRoute from "./Utils/AnonymousRoute ";
 import HomeStudent from "./Student/Page/HomeStudent";
 import HomeInstructor from "./Instructor/Page/HomeInstructor";
+import ForgotPassword from "./Admin/Page/ForgotPassword/ForgotPassword";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route element={<AnonymousRoute />}>
             <Route path="" element={<Login></Login>} />
             <Route path="register" element={<Register></Register>} />
+            <Route path="forgot-password" element={<ForgotPassword/>} />
           </Route>
           <Route element={<ProtectedRoute requiredRole="Administrator" />}>
             <Route path="admin" element={<TempUI />}>

@@ -37,3 +37,18 @@ export const LoginActionAsync = (dataLogin) => {
     }
   };
 };
+
+export const OtpEmailActionAsync = (username) => {
+  return async (dispatch) => {
+    try {
+      const res = await httpClient.post(`/api/v1/auth/otp-email`, username);
+
+      console.log(res)
+      message.success(`${res.message}`);
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
