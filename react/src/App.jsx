@@ -1,0 +1,44 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import "./App.css";
+import Home from "./Admin/Page/Home/Home";
+import { store } from "./Redux/Store";
+import TempUI from "./Admin/TempUI/TempUI";
+import Login from "./Admin/Page/Login/Login";
+import Register from "./Admin/Page/Register/Register";
+import FranchiseManagement from "./Admin/Page/FranchiseManagement/FranchiseManagement";
+import ProtectedRoute from "./Utils/ProtectedRoute";
+import AnonymousRoute from "./Utils/AnonymousRoute ";
+import HomeStudent from "./Student/Page/HomeStudent";
+import HomeInstructor from "./Instructor/Page/HomeInstructor";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Provider store={store}>
+        <Routes>
+          <Route element={<AnonymousRoute />}>
+            <Route path="" element={<Login></Login>} />
+            <Route path="register" element={<Register></Register>} />
+          </Route>
+          <Route element={<ProtectedRoute requiredRole="Administrator" />}>
+            <Route path="admin" element={<TempUI />}>
+              <Route path="" element={<Home />} />
+              <Route path="franchise" element={<FranchiseManagement />} />
+            </Route>
+          </Route>
+
+          <Route element={<ProtectedRoute requiredRole="Student" />}>
+            <Route path="student" element={<HomeStudent />} />
+          </Route>
+
+          <Route element={<ProtectedRoute requiredRole="Instructor" />}>
+            <Route path="instructor" element={<HomeInstructor />} />
+          </Route>
+        </Routes>
+      </Provider>
+    </BrowserRouter>
+  );
+}
+
+export default App;
