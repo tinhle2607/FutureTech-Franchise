@@ -13,6 +13,8 @@ import HomeStudent from "./Student/Page/HomeStudent";
 import HomeInstructor from "./Instructor/Page/HomeInstructor";
 import ForgotPassword from "./Admin/Page/ForgotPassword/ForgotPassword";
 import ResetPassword from "./Admin/Page/ForgotPassword/ResetPassword";
+import TempUIManager from "./Manager/TempUI/TempUIManager";
+import HomeManager from "./Manager/Page/Home/HomeManager";
 
 function App() {
   return (
@@ -39,6 +41,9 @@ function App() {
           <Route element={<ProtectedRoute requiredRole="Instructor" />}>
             <Route path="instructor" element={<HomeInstructor />} />
           </Route>
+          <Route path="Manager" element={<TempUIManager/>}>
+              <Route path="" element={<HomeManager/>} />
+            </Route>
         </Routes>
       </Provider>
     </BrowserRouter>
