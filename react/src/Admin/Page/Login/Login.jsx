@@ -107,7 +107,7 @@ import { Button, Form, Grid, Input, theme, Typography } from "antd";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { LoginActionAsync } from "../../../Redux/ReducerAPI/AuthenticationReducer";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { USER_LOGIN } from "../../../Utils/Interceptors";
 import { getDataJSONStorage } from "../../../Utils/UtilsFunction";
 
@@ -250,9 +250,9 @@ const Login = () => {
             />
           </Form.Item>
           <Form.Item>
-            <a style={styles.forgotPassword} href="">
+            <NavLink to="/forgot-password" style={styles.forgotPassword}>
               Forgot password?
-            </a>
+            </NavLink>
           </Form.Item>
           <Form.Item style={{ marginBottom: "0px" }}>
             <Button block="true" type="primary" htmlType="submit">
