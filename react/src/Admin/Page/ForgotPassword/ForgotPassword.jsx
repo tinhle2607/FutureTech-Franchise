@@ -1,17 +1,27 @@
-import React from "react";
 import { Form, Input, Button, Typography, Card, Space } from "antd";
-import { MailOutlined } from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { OtpEmailActionAsync } from "../../../Redux/ReducerAPI/AuthenticationReducer";
+import { NavLink, useNavigate } from "react-router-dom";
+
 
 const { Title } = Typography;
 
 const ForgotPassword = () => {
   const [form] = Form.useForm();
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onFinish = (values) => {
     dispatch(OtpEmailActionAsync(values))
+      .then((response) => {
+        if (response)
+          navigate(`/forgot-password/reset-password?username=${(values.username)}`);
+      })
+      .catch((error) => {
+        console.error(error);
+        // Handle errors or show error messages
+      });
   };
 
   return (
@@ -50,13 +60,13 @@ const ForgotPassword = () => {
             rules={[
               {
                 required: true,
-                message: "Please input your username or email!",
+                message: "Please input your username!",
               },
             ]}
           >
             <Input
-              prefix={<MailOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
-              placeholder="Enter your username or email"
+              prefix={<UserOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
+              placeholder="Enter your username"
               style={{ borderRadius: "4px" }}
             />
           </Form.Item>
@@ -72,12 +82,9 @@ const ForgotPassword = () => {
           </Form.Item>
           <Form.Item>
             <Space style={{ width: "100%", justifyContent: "space-between" }}>
-              <Button type="link" href="/login">
+              <NavLink to="/">
                 Back to Login
-              </Button>
-              <Button type="link" href="/register">
-                Create an Account
-              </Button>
+              </NavLink>
             </Space>
           </Form.Item>
         </Form>
