@@ -135,6 +135,8 @@ const Login = () => {
               break;
             case "Instructor":
               navigate("/instructor");
+            case "Manager":
+              navigate("/manager");
               break;
             default:
               navigate("/"); // Redirect to home or login if role is not recognized

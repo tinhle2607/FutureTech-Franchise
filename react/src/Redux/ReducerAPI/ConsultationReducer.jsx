@@ -34,10 +34,23 @@ export const GetFranchiseRegistrationConsultActionAsync = () => {
   return async (dispatch) => {
     try {
       const res = await httpClient.get(
-        `/api/v1/franchiseRegistrationRequests`
+        `/api/v1/consultations`
       );
       console.log(res.data.items);
       dispatch(setFranchiseConsult(res.data.items))
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
+export const UpdateFranchiseRegistrationConsultActionAsync = (id) => {
+  return async (dispatch) => {
+    try {
+      const res = await httpClient.put(
+        `/api/v1/consultations/${id}`
+      );
+      dispatch(GetFranchiseRegistrationConsultActionAsync())
     } catch (error) {
       console.error(error);
     }

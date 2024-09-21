@@ -15,6 +15,7 @@ import ForgotPassword from "./Admin/Page/ForgotPassword/ForgotPassword";
 import ResetPassword from "./Admin/Page/ForgotPassword/ResetPassword";
 import TempUIManager from "./Manager/TempUI/TempUIManager";
 import HomeManager from "./Manager/Page/Home/HomeManager";
+import ConsultationManagement from "./Manager/Page/ConsultationManagement/ConsultationManagement";
 
 function App() {
   return (
@@ -25,7 +26,10 @@ function App() {
             <Route path="" element={<Login></Login>} />
             <Route path="register" element={<Register></Register>} />
             <Route path="forgot-password" element={<ForgotPassword />} />
-            <Route path="forgot-password/reset-password" element={<ResetPassword />} />
+            <Route
+              path="forgot-password/reset-password"
+              element={<ResetPassword />}
+            />
           </Route>
           <Route element={<ProtectedRoute requiredRole="Administrator" />}>
             <Route path="admin" element={<TempUI />}>
@@ -41,9 +45,13 @@ function App() {
           <Route element={<ProtectedRoute requiredRole="Instructor" />}>
             <Route path="instructor" element={<HomeInstructor />} />
           </Route>
-          <Route path="Manager" element={<TempUIManager/>}>
-              <Route path="" element={<HomeManager/>} />
+
+          <Route element={<ProtectedRoute requiredRole="Manager" />}>
+            <Route path="manager" element={<TempUIManager />}>
+              <Route path="" element={<HomeManager />} />
+              <Route path="consult" element={<ConsultationManagement/>} />
             </Route>
+          </Route>
         </Routes>
       </Provider>
     </BrowserRouter>

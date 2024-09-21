@@ -12,12 +12,10 @@
 
 // export default ProtectedRoute;
 
-
-
-import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
-import { getDataTextStorage, getDataJSONStorage } from './UtilsFunction';
-import { TOKEN_AUTHOR, USER_LOGIN } from './Interceptors';
+import React from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import { getDataTextStorage, getDataJSONStorage } from "./UtilsFunction";
+import { TOKEN_AUTHOR, USER_LOGIN } from "./Interceptors";
 
 const ProtectedRoute = ({ requiredRole }) => {
   const accessToken = getDataTextStorage(TOKEN_AUTHOR); // Get the accessToken from localStorage
@@ -33,12 +31,14 @@ const ProtectedRoute = ({ requiredRole }) => {
   if (userRole !== requiredRole) {
     // Redirect to the correct page based on their role
     switch (userRole) {
-      case 'Administrator':
+      case "Administrator":
         return <Navigate to="/admin" />;
-      case 'Student':
+      case "Student":
         return <Navigate to="/student" />;
-      case 'Instructor':
+      case "Instructor":
         return <Navigate to="/instructor" />;
+      case "Manager":
+        return <Navigate to="/manager" />;
       default:
         return <Navigate to="/" />; // Redirect to login if role is invalid or undefined
     }

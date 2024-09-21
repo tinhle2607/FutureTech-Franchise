@@ -9,7 +9,6 @@
 
 // export default AnonymousRoute;
 
-
 import { Outlet, Navigate } from "react-router-dom";
 import { getDataTextStorage, getDataJSONStorage } from "./UtilsFunction"; // Assuming you have this function for localStorage
 import { TOKEN_AUTHOR, USER_LOGIN } from "./Interceptors"; // Assuming USER_LOGIN holds the user info
@@ -19,16 +18,18 @@ const AnonymousRoute = () => {
   const userLogin = getDataJSONStorage(USER_LOGIN); // Fetch the user data from storage
 
   if (accessToken && userLogin) {
-    const role = userLogin?.role; 
+    const role = userLogin?.role;
 
     // Redirect based on the role
     switch (role) {
-      case 'Administrator':
+      case "Administrator":
         return <Navigate to="/admin" replace />;
-      case 'Student':
+      case "Student":
         return <Navigate to="/student" replace />;
-      case 'Instructor':
+      case "Instructor":
         return <Navigate to="/instructor" replace />;
+      case "Manager":
+        return <Navigate to="/manager" replace />;
       default:
         return <Navigate to="/" replace />;
     }
