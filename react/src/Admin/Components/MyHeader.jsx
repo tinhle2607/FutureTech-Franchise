@@ -1,6 +1,12 @@
 import React from "react";
+import { removeDataTextStorage } from "../../Utils/UtilsFunction";
+import { REFRESH_TOKEN, TOKEN_AUTHOR, USER_LOGIN } from "../../Utils/Interceptors";
+import { message } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const MyHeader = () => {
+  const navigate = useNavigate();
+
   return (
     <header className="app-header">
       <nav className="navbar navbar-expand-lg navbar-light">
@@ -76,12 +82,19 @@ const MyHeader = () => {
                     <i className="ti ti-list-check fs-6" />
                     <p className="mb-0 fs-3">My Task</p>
                   </a>
-                  <a
-                    href="./authentication-login.html"
-                    className="btn btn-outline-primary mx-3 mt-2 d-block"
+                  <button
+                    className="btn btn-outline-primary mx-auto d-block mt-2"
+                    style={{ width: "85%" }}
+                    onClick={() => {
+                      removeDataTextStorage(TOKEN_AUTHOR);
+                      removeDataTextStorage(REFRESH_TOKEN);
+                      removeDataTextStorage(USER_LOGIN);
+                      navigate("/");
+                      message.success("Logout success!"); 
+                    }}
                   >
                     Logout
-                  </a>
+                  </button>
                 </div>
               </div>
             </li>

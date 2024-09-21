@@ -16,7 +16,6 @@ const ConsultationManagement = () => {
       title: "Are you sure you want to delete this post?",
       onOk: () => {
         dispatch(UpdateFranchiseRegistrationConsultActionAsync(id));
-        // console.log(id)
       },
     });
   };
@@ -25,7 +24,7 @@ const ConsultationManagement = () => {
     <div>
       <div className="card">
         <div className="card-body">
-          <h5 className="card-title">Pending approval franchise</h5>
+          <h5 className="card-title">Pending approval consult</h5>
           <div className="table-responsive">
             <table className="table text-nowrap align-middle mb-0">
               <thead>

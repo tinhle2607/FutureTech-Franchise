@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const LeftSidebar = () => {
   return (
@@ -6,9 +7,9 @@ const LeftSidebar = () => {
       {/* Sidebar scroll*/}
       <div>
         <div className="brand-logo d-flex align-items-center justify-content-between">
-          <a href="./index.html" className="text-nowrap logo-img">
+          <NavLink to="/manager" className="text-nowrap logo-img">
             <img src="/assets/images/logos/logo-light.svg" alt />
-          </a>
+          </NavLink>
           <div
             className="close-btn d-xl-none d-block sidebartoggler cursor-pointer"
             id="sidebarCollapse"
@@ -24,9 +25,9 @@ const LeftSidebar = () => {
               <span className="hide-menu">Home</span>
             </li>
             <li className="sidebar-item">
-              <a
+              <NavLink
                 className="sidebar-link"
-                href="./index.html"
+                to="/manager"
                 aria-expanded="false"
               >
                 <span>
@@ -36,16 +37,16 @@ const LeftSidebar = () => {
                   />
                 </span>
                 <span className="hide-menu">Dashboard</span>
-              </a>
+              </NavLink>
             </li>
             <li className="nav-small-cap">
               <i className="ti ti-dots nav-small-cap-icon fs-6" />
               <span className="hide-menu">Management</span>
             </li>
             <li className="sidebar-item">
-              <a
+              <NavLink
                 className="sidebar-link"
-                href="./ui-buttons.html"
+                to="#"
                 aria-expanded="false"
               >
                 <span>
@@ -55,12 +56,12 @@ const LeftSidebar = () => {
                   />
                 </span>
                 <span className="hide-menu">Users</span>
-              </a>
+              </NavLink>
             </li>
             <li className="sidebar-item">
-              <a
+              <NavLink
                 className="sidebar-link"
-                href="./ui-alerts.html"
+                to="#"
                 aria-expanded="false"
               >
                 <span>
@@ -70,12 +71,12 @@ const LeftSidebar = () => {
                   />
                 </span>
                 <span className="hide-menu">Intructors</span>
-              </a>
+              </NavLink>
             </li>
             <li className="sidebar-item">
-              <a
+              <NavLink
                 className="sidebar-link"
-                href="./ui-card.html"
+                to="#"
                 aria-expanded="false"
               >
                 <span>
@@ -85,12 +86,12 @@ const LeftSidebar = () => {
                   />
                 </span>
                 <span className="hide-menu">Card</span>
-              </a>
+              </NavLink>
             </li>
             <li className="sidebar-item">
-              <a
+              <NavLink
                 className="sidebar-link"
-                href="./ui-forms.html"
+                to="#"
                 aria-expanded="false"
               >
                 <span>
@@ -100,12 +101,12 @@ const LeftSidebar = () => {
                   />
                 </span>
                 <span className="hide-menu">Forms</span>
-              </a>
+              </NavLink>
             </li>
             <li className="sidebar-item">
-              <a
+              <NavLink
                 className="sidebar-link"
-                href="./ui-typography.html"
+                to="#"
                 aria-expanded="false"
               >
                 <span>
@@ -115,20 +116,15 @@ const LeftSidebar = () => {
                   />
                 </span>
                 <span className="hide-menu">Typography</span>
-              </a>
+              </NavLink>
             </li>
             <li className="nav-small-cap">
-              <iconify-icon
-                icon="solar:menu-dots-linear"
-                className="nav-small-cap-icon fs-6"
-              />
-              <span className="hide-menu">Franchise</span>
+              <span className="hide-menu">Consult</span>
             </li>
             <li className="sidebar-item">
-              <a
+              <NavLink
                 className="sidebar-link"
-                href="./authentication-login.html"
-                aria-expanded="false"
+                to="/manager/consult"
               >
                 <span>
                   <iconify-icon
@@ -137,12 +133,12 @@ const LeftSidebar = () => {
                   />
                 </span>
                 <span className="hide-menu">Approcal</span>
-              </a>
+              </NavLink>
             </li>
             <li className="sidebar-item">
-              <a
+              <NavLink
                 className="sidebar-link"
-                href="./authentication-register.html"
+                to="#"
                 aria-expanded="false"
               >
                 <span>
@@ -152,7 +148,7 @@ const LeftSidebar = () => {
                   />
                 </span>
                 <span className="hide-menu">Status</span>
-              </a>
+              </NavLink>
             </li>
             <li className="nav-small-cap">
               <iconify-icon
@@ -162,9 +158,9 @@ const LeftSidebar = () => {
               <span className="hide-menu">EXTRA</span>
             </li>
             <li className="sidebar-item">
-              <a
+              <NavLink
                 className="sidebar-link"
-                href="./icon-tabler.html"
+                to="#"
                 aria-expanded="false"
               >
                 <span>
@@ -174,12 +170,12 @@ const LeftSidebar = () => {
                   />
                 </span>
                 <span className="hide-menu">Icons</span>
-              </a>
+              </NavLink>
             </li>
             <li className="sidebar-item">
-              <a
+              <NavLink
                 className="sidebar-link"
-                href="./sample-page.html"
+                to="#"
                 aria-expanded="false"
               >
                 <span>
@@ -189,7 +185,7 @@ const LeftSidebar = () => {
                   />
                 </span>
                 <span className="hide-menu">Sample Page</span>
-              </a>
+              </NavLink>
             </li>
           </ul>
           <div className="unlimited-access hide-menu bg-primary-subtle position-relative mb-7 mt-7 rounded-3">
