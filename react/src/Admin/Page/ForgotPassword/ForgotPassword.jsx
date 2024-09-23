@@ -43,7 +43,7 @@ const ForgotPassword = () => {
         }}
         title={
           <Title level={3} style={{ textAlign: "center" }}>
-            Forgot Password
+            Tìm tài khoản của bạn
           </Title>
         }
       >
@@ -52,21 +52,22 @@ const ForgotPassword = () => {
           name="forgot_password"
           onFinish={onFinish}
           layout="vertical"
+          validateTrigger="onBlur"
         >
           <Form.Item
             name="username"
-            label="Username"
+            label="Tên đăng nhập"
             style={{ marginBottom: "16px" }}
             rules={[
               {
                 required: true,
-                message: "Please input your username!",
+                message: "Vui lòng nhập tên đăng nhập của bạn.",
               },
             ]}
           >
             <Input
               prefix={<UserOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
-              placeholder="Enter your username"
+              placeholder="Nhập tên đăng nhập của bạn"
               style={{ borderRadius: "4px" }}
             />
           </Form.Item>
@@ -77,13 +78,13 @@ const ForgotPassword = () => {
               block
               style={{ borderRadius: "4px", fontWeight: "bold" }}
             >
-              Submit
+              Tìm kiếm
             </Button>
           </Form.Item>
           <Form.Item>
             <Space style={{ width: "100%", justifyContent: "space-between" }}>
               <NavLink to="/">
-                Back to Login
+                Hủy
               </NavLink>
             </Space>
           </Form.Item>

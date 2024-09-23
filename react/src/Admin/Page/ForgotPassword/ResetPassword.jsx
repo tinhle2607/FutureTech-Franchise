@@ -91,7 +91,7 @@ const ResetPassword = () => {
                 }}
                 title={
                     <Title level={3} style={{ textAlign: "center" }}>
-                        Forgot Password
+                        Đổi mật khẩu
                     </Title>
                 }
             >
@@ -103,51 +103,52 @@ const ResetPassword = () => {
                 >
                     <Form.Item
                         name="newPassword"
-                        label="New Password"
+                        label="Mật khẩu mới"
                         style={{ marginBottom: "16px" }}
                         rules={[
                             {
                                 required: true,
-                                message: "Please input your new password",
+                                message: "Vui lòng nhập mật khẩu mới.",
                             },
                             {
                                 min: 6,
-                                message: "Password must be at least 6 characters long!"
+                                message: "Mật khẩu phải dài ít nhất 6 ký tự."
                             },
                             {
                                 pattern: /^(?=.*[a-zA-Z])(?=.*\d).+$/,
-                                message: "Your password must contain at least one letter and one number!"
+                                message: "Mật khẩu của bạn phải chứa ít nhất một chữ cái và một chữ số."
                             },
                         ]}
                     >
                         <Input
                             type="password"
-                            placeholder="Enter your new password"
+                            placeholder="Nhập mật khẩu mới của bạn"
                             style={{ borderRadius: "4px" }}
                         />
                     </Form.Item>
                     <Form.Item
                         name="confirmPassword"
-                        label="Confirm Password"
+                        label="Xác nhận mật khẩu mới"
+                        validateTrigger="onBlur"
                         style={{ marginBottom: "16px" }}
                         rules={[
                             {
                                 required: true,
-                                message: "Please input confirm password",
+                                message: "Vui lòng xác nhân mật khẩu mới",
                             },
                             {
                                 validator: (_, value) => {
                                     if (!value || value === form.getFieldValue('newPassword')) {
                                         return Promise.resolve();
                                     }
-                                    return Promise.reject(new Error("Your password confirmation does not match!"));
+                                    return Promise.reject(new Error("Mật khẩu xác nhận của bạn không trùng khớp."));
                                 }
                             },
                         ]}
                     >
                         <Input
                             type="password"
-                            placeholder="Enter confirm password"
+                            placeholder="Nhập mật khẩu để xác nhận"
                             style={{ borderRadius: "4px" }}
                         />
                     </Form.Item>
@@ -158,7 +159,7 @@ const ResetPassword = () => {
                         rules={[
                             {
                                 required: true,
-                                message: "Please enter OTP Number",
+                                message: "Vui lòng nhập mã OTP",
                             },
                         ]}
                     >
@@ -173,7 +174,7 @@ const ResetPassword = () => {
                             block
                             style={{ borderRadius: "4px", fontWeight: "bold" }}
                         >
-                            Submit
+                            Đổi mật khẩu
                         </Button>
                     </Form.Item>
                     <Form.Item>
@@ -185,14 +186,14 @@ const ResetPassword = () => {
                                     navigate("/");
                                 }}
                             >
-                                Back to Login
+                                Hủy
                             </Button>
                             <Button
                                 type="link"
                                 onClick={handleResendOTP}
                                 disabled={isCountdownActive}
                             >
-                                Resend OTP {isCountdownActive ? `(${countdown}s)` : ''}
+                                Gửi lại mã OTP {isCountdownActive ? `(${countdown}s)` : ''}
                             </Button>
                         </Space>
                     </Form.Item>
