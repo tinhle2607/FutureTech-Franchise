@@ -8,11 +8,11 @@ const initialState = {
       cusomterName: "hieu",
       email: "hieu@gmail.com",
       phoneNumber: 902451769,
-      address: "123 street",
       status: "NotConsulted",
       consultantUserName: null,
     },
   ],
+  totalPagesCount: 0,
 };
 
 const ConsultationReducer = createSlice({
@@ -20,7 +20,8 @@ const ConsultationReducer = createSlice({
   initialState,
   reducers: {
     setFranchiseConsult: (state, action) => {
-      state.franchiseConsult = action.payload;
+      state.franchiseConsult = action.payload.items;
+      state.totalPagesCount = action.payload.totalPagesCount;
     },
   },
 });
@@ -30,27 +31,28 @@ export const { setFranchiseConsult } =
 
 export default ConsultationReducer.reducer;
 //------------API CALL------------
-export const GetFranchiseRegistrationConsultActionAsync = () => {
+
+export const GetFranchiseRegistrationConsultActionAsync = (status, pageIndex, pageSize) => {
   return async (dispatch) => {
     try {
-      const res = await httpClient.get(
-        `/api/v1/consultations`
-      );
-      console.log(res.data.items);
-      dispatch(setFranchiseConsult(res.data.items))
+      const res = await httpClient.get(`/api/v1/consultations`, {
+        params: { Status: status, PageIndex: pageIndex, PageSize: pageSize }
+      });
+      console.log(res.data);
+      dispatch(setFranchiseConsult(res.data));
     } catch (error) {
       console.error(error);
     }
   };
 };
 
-export const UpdateFranchiseRegistrationConsultActionAsync = (id) => {
+export const UpdateFranchiseRegistrationConsultActionAsync = (id, status, pageIndex, pageSize) => {
   return async (dispatch) => {
     try {
       const res = await httpClient.put(
         `/api/v1/consultations/${id}`
       );
-      dispatch(GetFranchiseRegistrationConsultActionAsync())
+      dispatch(GetFranchiseRegistrationConsultActionAsync(status, pageIndex, pageSize))
     } catch (error) {
       console.error(error);
     }
