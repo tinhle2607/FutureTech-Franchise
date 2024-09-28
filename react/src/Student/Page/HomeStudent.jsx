@@ -46,7 +46,9 @@ const HomeStudent = () => {
 
     // Tạo kết nối SignalR
     const connection = new signalR.HubConnectionBuilder()
-      .withUrl("https://localhost:7116/notificationHub")
+    .withUrl("https://localhost:7116/notificationHub", {
+      accessTokenFactory: () => localStorage.getItem("accessToken") // Lấy token từ localStorage
+    })
       .withAutomaticReconnect()
       .build();
 

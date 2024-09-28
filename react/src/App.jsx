@@ -9,13 +9,14 @@ import Register from "./Admin/Page/Register/Register";
 import FranchiseManagement from "./Admin/Page/FranchiseManagement/FranchiseManagement";
 import ProtectedRoute from "./Utils/ProtectedRoute";
 import AnonymousRoute from "./Utils/AnonymousRoute ";
-import HomeStudent from "./Student/Page/HomeStudent";
 import HomeInstructor from "./Instructor/Page/HomeInstructor";
 import ForgotPassword from "./Admin/Page/ForgotPassword/ForgotPassword";
 import ResetPassword from "./Admin/Page/ForgotPassword/ResetPassword";
 import TempUIManager from "./Manager/TempUI/TempUIManager";
 import HomeManager from "./Manager/Page/Home/HomeManager";
 import ConsultationManagement from "./Manager/Page/ConsultationManagement/ConsultationManagement";
+import TempUIStudent from "./Student/TempUI/TempUIStudent";
+import HomeStudent from "./Student/Page/HomeStudent/HomeStudent";
 
 function App() {
   return (
@@ -39,7 +40,14 @@ function App() {
           </Route>
 
           <Route element={<ProtectedRoute requiredRole="Student" />}>
-            <Route path="student" element={<HomeStudent />} />
+            <Route path="student" element={<TempUIStudent/>} >
+
+            </Route>
+          </Route>
+          
+          <Route path="student-page" element={<TempUIStudent/>} >
+            <Route path="" element={<HomeStudent/>} />
+
           </Route>
 
           <Route element={<ProtectedRoute requiredRole="Instructor" />}>
