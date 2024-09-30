@@ -17,6 +17,7 @@ import HomeManager from "./Manager/Page/Home/HomeManager";
 import ConsultationManagement from "./Manager/Page/ConsultationManagement/ConsultationManagement";
 import TempUIStudent from "./Student/TempUI/TempUIStudent";
 import HomeStudent from "./Student/Page/HomeStudent/HomeStudent";
+import CourseDetail from "./Student/Page/CourseDetail/CourseDetail";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           
           <Route path="student-page" element={<TempUIStudent/>} >
             <Route path="" element={<HomeStudent/>} />
+            <Route path="course-detail" element={<CourseDetail/>} />
 
           </Route>
 
