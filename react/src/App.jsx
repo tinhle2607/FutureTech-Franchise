@@ -18,6 +18,7 @@ import ConsultationManagement from "./Manager/Page/ConsultationManagement/Consul
 import TempUIStudent from "./Student/TempUI/TempUIStudent";
 import HomeStudent from "./Student/Page/HomeStudent/HomeStudent";
 import CourseDetail from "./Student/Page/CourseDetail/CourseDetail";
+import HomeStudentNoti from "./Student/Page/HomeStudentNoti";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
 
           <Route element={<ProtectedRoute requiredRole="Student" />}>
             <Route path="student" element={<TempUIStudent/>} >
+            <Route path="" element={<HomeStudentNoti/>} />
 
             </Route>
           </Route>
