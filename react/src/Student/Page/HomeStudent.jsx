@@ -2,10 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import { Badge, notification } from "antd";
 import { BellOutlined } from "@ant-design/icons";
 import * as signalR from "@microsoft/signalr";
-import 'jquery';
-import 'bootstrap';
-import 'apexcharts';
-import 'simplebar';
 
 const HomeStudent = () => {
   const [notificationCount, setNotificationCount] = useState(0);
@@ -76,7 +72,7 @@ const HomeStudent = () => {
             });
           } else {
             notification.error({
-              message: "Lỗi nhận thông báo",
+              message: "Lỗi nhận thông ",
               description: message.message,
             });
           }
